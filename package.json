@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "node ./cmd/server.js",
+    "server": "node -r dotenv/config ./cmd/server.js",
     "migrate": "node -r dotenv/config ./cmd/migrate.js"
   },
   "type": "module",
