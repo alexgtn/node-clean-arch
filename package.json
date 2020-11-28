@@ -3,13 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "node ./cmd/server.js"
+    "server": "node ./cmd/server.js",
+    "migrate": "node -r dotenv/config ./cmd/migrate.js"
   },
   "type": "module",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "pg": "^8.5.1",
+    "postgres-migrations": "^5.1.0"
   }
 }
