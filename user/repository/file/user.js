@@ -11,7 +11,6 @@ export default class UsersJSONRepository {
 
     async getUsers() {
         const usersBuffer = await this.fsPromises.readFile(this.filePath);
-        const usersString = usersBuffer.toString();
-        return JSON.parse(usersString);
+        return JSON.parse(usersBuffer);
     }
 }

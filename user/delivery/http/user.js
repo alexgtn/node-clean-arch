@@ -12,7 +12,10 @@ export default class UsersHandler {
 
     registerRoutes(app, router) {
         const subRouter = router.Router();
-        subRouter.get('/', (req, res) => this.getUsers(req, res, this.userUsecase));
+
+        const getUsersHandler = (req, res) => this.getUsers(req, res, this.userUsecase);
+        subRouter.get('/', getUsersHandler);
+
         app.use("/users", subRouter);
     }
 }

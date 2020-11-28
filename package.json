@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "node ./app/server.js"
+    "server": "node ./cmd/server.js"
   },
   "type": "module",
   "dependencies": {

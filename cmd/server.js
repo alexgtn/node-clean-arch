@@ -11,7 +11,7 @@ import cookieParser from "cookie-parser"
 import logger from "morgan"
 import UsersUsecase from "../user/usecase/users.js";
 import IndexUsecase from "../index/usecase/index.js";
-import UsersJSONRepository from "../user/repository/user.js";
+import UsersJSONRepository from "../user/repository/file/user.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import UsersHandler from "../user/delivery/http/user.js";
@@ -23,7 +23,7 @@ import IndexHandler from "../index/delivery/http/index.js";
 
 var port = normalizePort(process.env.PORT || '3000');
 
-const usersRepository = new UsersJSONRepository('./user/repository/data/users.json');
+const usersRepository = new UsersJSONRepository('./user/repository/file/data/users.json');
 const usersUsecase = new UsersUsecase(usersRepository);
 const indexUsecase = new IndexUsecase();
 const usersHandler = new UsersHandler(usersUsecase);
