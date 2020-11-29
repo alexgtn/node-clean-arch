@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "yarn migrate && yarn server",
-    "server": "node -r dotenv/config ./cmd/server.js",
+    "server": "yarn migrate && yarn server",
+    "start": "node -r dotenv/config ./cmd/server.js",
     "migrate": "node -r dotenv/config ./cmd/migrate.js"
   },
   "type": "module",
