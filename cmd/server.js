@@ -40,8 +40,8 @@ const dbConfig = {
 const dbClient = new Client(dbConfig)
 await dbClient.connect()
 
-const usersRepository = new UsersJSONRepository('./user/repository/file/data/users.json');
-// const usersRepository = new UsersPostgresRepository(dbClient);
+// const usersRepository = new UsersJSONRepository('./user/repository/file/data/users.json');
+const usersRepository = new UsersPostgresRepository(dbClient);
 const usersUsecase = new UsersUsecase(usersRepository);
 const indexUsecase = new IndexUsecase();
 const usersHandler = new UsersHandler(usersUsecase);
