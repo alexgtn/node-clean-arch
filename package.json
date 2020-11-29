@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "server": "node ./cmd/server.js",
-    "start-local": "node -r dotenv/config ./cmd/server.js",
+    "server-local": "node -r dotenv/config ./cmd/server.js",
     "start": "yarn migrate && yarn server",
-    "migrate-local": "node -r dotenv/config ./cmd/migrate.js",
     "migrate": "node ./cmd/migrate.js"
   },
   "type": "module",
