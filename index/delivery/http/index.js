@@ -12,7 +12,10 @@ export default class IndexHandler {
 
     registerRoutes(app, routerFactory) {
         const subRouter = routerFactory.Router();
-        subRouter.get('/', (req, res) => this.getIndexPage(req, res, this.indexUsecase));
+
+        const getIndexPageHandler = (req, res) => this.getIndexPage(req, res, this.indexUsecase)
+        subRouter.get('/', getIndexPageHandler);
+
         app.use("/", subRouter);
     }
 }
