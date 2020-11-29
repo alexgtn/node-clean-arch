@@ -6,7 +6,8 @@
     "server": "node ./cmd/server.js",
     "start-local": "node -r dotenv/config ./cmd/server.js",
     "start": "yarn migrate && yarn server",
-    "migrate": "node -r dotenv/config ./cmd/migrate.js"
+    "migrate-local": "node -r dotenv/config ./cmd/migrate.js",
+    "migrate": "node ./cmd/migrate.js"
   },
   "type": "module",
   "dependencies": {
