@@ -9,13 +9,16 @@ import express from "express"
 import path from "path"
 import cookieParser from "cookie-parser"
 import logger from "morgan"
-import UsersUsecase from "../user/usecase/users.js";
+import UsersUsecase from "../user/usecase/user.js";
 import IndexUsecase from "../index/usecase/index.js";
 import UsersJSONRepository from "../user/repository/file/user.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import UsersHandler from "../user/delivery/http/user.js";
 import IndexHandler from "../index/delivery/http/index.js";
+import UsersPostgresRepository from "../user/repository/db/user.js";
+import pkg from 'pg';
+const { Client } = pkg;
 
 /**
  * Get port from environment and store in Express.
@@ -23,7 +26,22 @@ import IndexHandler from "../index/delivery/http/index.js";
 
 var port = normalizePort(process.env.PORT || '3000');
 
+const dbConfig = {
+  database: process.env.PG_DATABASE,
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  port: process.env.PG_PORT,
+  ssl: {
+    rejectUnauthorized: false,
+  }
+}
+
+const dbClient = new Client(dbConfig)
+await dbClient.connect()
+
 const usersRepository = new UsersJSONRepository('./user/repository/file/data/users.json');
+// const usersRepository = new UsersPostgresRepository(dbClient);
 const usersUsecase = new UsersUsecase(usersRepository);
 const indexUsecase = new IndexUsecase();
 const usersHandler = new UsersHandler(usersUsecase);

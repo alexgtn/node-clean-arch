@@ -10,8 +10,8 @@ export default class IndexHandler {
         res.send(indexPageHTML);
     }
 
-    registerRoutes(app, router) {
-        const subRouter = router.Router();
+    registerRoutes(app, routerFactory) {
+        const subRouter = routerFactory.Router();
         subRouter.get('/', (req, res) => this.getIndexPage(req, res, this.indexUsecase));
         app.use("/", subRouter);
     }

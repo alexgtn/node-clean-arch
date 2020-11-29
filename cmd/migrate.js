@@ -13,7 +13,7 @@ const dbConfig = {
     }
 }
 
-const client = new Client(dbConfig) // or a Pool, or a PoolClient
+const client = new Client(dbConfig)
 await client.connect()
 try {
     await migrate({client}, "db/migrations")

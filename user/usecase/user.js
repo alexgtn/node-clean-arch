@@ -8,4 +8,8 @@ export default class UsersUsecase {
   getUsers() {
     return this.userRepository.getUsers();
   }
+
+  addUser(user) {
+    return this.userRepository.addUser(user);
+  }
 }
